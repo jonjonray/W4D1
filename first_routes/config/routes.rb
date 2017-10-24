@@ -13,9 +13,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :destroy, :index, :show, :update] do
     resources :art_works, only: [:index]
+    resources :comments, only: [:create, :destroy, :index]
   end
 
-  resources :art_works, only: [:create, :destroy, :index, :show, :update]
+  resources :art_works, only: [:create, :destroy, :index, :show, :update] do
+    resources :comments, only: [:create, :destroy, :index]
+  end
 
   resources :artwork_shares, only: [:create, :destroy]
 
